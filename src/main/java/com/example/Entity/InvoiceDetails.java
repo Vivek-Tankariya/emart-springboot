@@ -17,8 +17,7 @@ public class InvoiceDetails {
 	private int PointsRedeem;
 	private int invoiceID;
 	private int ProdID;
-	
-	
+	private String prodName;
 	
 	
 	@Id
@@ -71,7 +70,12 @@ public class InvoiceDetails {
 		ProdID = prodID;
 	}
 	
-	
+	public String getProdName() {
+		return prodName;
+	}
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
 	
 	
 }

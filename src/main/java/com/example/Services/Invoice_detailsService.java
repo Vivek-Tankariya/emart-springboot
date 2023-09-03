@@ -16,5 +16,7 @@ public interface Invoice_detailsService
 	InvoiceDetails updateInvoice_details(int invoice_detailsId, InvoiceDetails updatedInvoice_details);
 
 	void deleteInvoice_details(int invoice_detailsId);
+	
+	List<InvoiceDetails> GetDetails (int invoiceID);
 
 }

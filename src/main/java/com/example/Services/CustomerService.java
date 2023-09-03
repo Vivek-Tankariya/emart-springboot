@@ -14,6 +14,8 @@ public interface CustomerService {
 	public Customer getCustomerById(int cid);
 	Optional<Customer> getCustomerByEmail(String email);
 	List<Customer> getPrimeCustomers();
-	
+	int checkCust(String e, String p);
+	boolean checkCardHolder(int id);
+	int getPointsByID(int id);
 
 }

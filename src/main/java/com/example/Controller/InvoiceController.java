@@ -27,8 +27,8 @@ public class InvoiceController {
 	}
 	
 	@GetMapping("/{InvoiceId}")
-	public ResponseEntity<?> getInvoiceByID(@PathVariable int id){
-		return new ResponseEntity<> (invoiceServ.getInvoiceById(id),HttpStatus.OK);
+	public ResponseEntity<?> getInvoiceByID(@PathVariable int InvoiceId){
+		return new ResponseEntity<> (invoiceServ.getInvoiceById(InvoiceId),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{InvoiceId}")

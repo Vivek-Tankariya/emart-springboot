@@ -15,9 +15,8 @@ public class Invoice {
 	private double totalAmt;
 	private double tax;
 	private double deliveryCharge;
-	private double discount;
 	private double TotalBill;
-	private int CustID;
+	private int custID;
 	private List<InvoiceDetails> InvoiceDtList;
 	private List<Order> Olist;
 	
@@ -57,14 +56,6 @@ public class Invoice {
 	}
 	
 	
-	public double getDiscount() {
-		return discount;
-	}
-	public void setDiscount(double discount) {
-		this.discount = discount;
-	}
-	
-	
 	public double getTotalBill() {
 		return TotalBill;
 	}
@@ -73,14 +64,15 @@ public class Invoice {
 	}
 	
 	
+	
+	
+	
 	public int getCustID() {
-		return CustID;
+		return custID;
 	}
 	public void setCustID(int custID) {
-		this.CustID = custID;
+		this.custID = custID;
 	}
-	
-	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="invoiceID")
 	public List<InvoiceDetails> getInvoiceDtList() {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.Entity.Category;
 import com.example.Entity.Product;
 import com.example.Repositories.ProductRepository;
 
@@ -74,5 +75,11 @@ public class ProductServicesImpl implements ProductService
     public List<Product> getProductsWithValidDiscount() {
         return productRepository.findProductsWithValidDiscount();
     }
+    
+    @Override
+	public List<Product> findByCatID(int id) {
+		// TODO Auto-generated method stub
+		return productRepository.findByCatID(id);
+	}
 
 }

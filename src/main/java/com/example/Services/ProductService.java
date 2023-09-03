@@ -2,6 +2,7 @@ package com.example.Services;
 
 import java.util.List;
 
+import com.example.Entity.Category;
 import com.example.Entity.Product;
 
 public interface ProductService 
@@ -19,8 +20,9 @@ public interface ProductService
 	
 	List<Product> getProductsByPriceRange(double minPrice, double maxPrice);
 	
+	List<Product> getProductsWithValidDiscount();
 	
-	  List<Product> getProductsWithValidDiscount();
+	List<Product> findByCatID(int id);
 	
 
 }

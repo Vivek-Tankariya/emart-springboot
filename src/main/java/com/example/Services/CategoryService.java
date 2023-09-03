@@ -18,7 +18,7 @@ public interface CategoryService {
 	
 	List<Category> getCategoriesByCategoryName(String categoryName);
 
-
+	List<Category> findByParentCatID(int id);
 
 	
 

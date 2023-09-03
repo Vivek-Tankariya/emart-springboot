@@ -21,4 +21,13 @@ public interface CustomerRepository extends JpaRepository <Customer,Integer> {
 	
 	List<Customer> findByCardHolderTrue();
 	
+	@Query(value = "SELECT c.custID FROM Customer c WHERE c.custEmail = :e and c.custPassword = :p")
+	int checkCust(@Param("e") String e, @Param("p") String p);
+	
+	@Query(value = "SELECT c.cardHolder FROM Customer c WHERE c.custID = :cid")
+	boolean checkCardHolder(@Param("cid") int cid);
+	
+	@Query(value = "SELECT c.points FROM Customer c WHERE c.custID = :cid")
+	int getPointsByID(@Param("cid") int cid);
+	
 }

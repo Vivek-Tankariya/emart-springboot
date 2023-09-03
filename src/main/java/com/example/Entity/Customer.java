@@ -16,8 +16,7 @@ public class Customer {
 	private int custID;
 	
 	@NotBlank(message = "Customer name must be entered")
-	@Pattern(regexp = "^[a-zA-Z]+$", message = "Customer name must contain only characters")
-	@Size(min = 4, max = 20, message = "Customer name must be between 4 to 20 characters")
+	@Pattern(regexp = "^[a-zA-Z ]+$", message = "Customer name must contain only characters and spaces")
 	@Column(nullable = false)
 	private String custName;
 	
@@ -34,7 +33,7 @@ public class Customer {
 	private String custEmail; // Add validation for email format
 	
 	@Pattern(regexp = "^[A-Za-z0-9]+$", message = "Password must contain only numbers and letters")
-	@Size(min = 10, max = 10, message = "Password has to be 10 characters")
+	@Size(min = 5,max = 10, message = "Password has to be min 5 max 10 characters")
 	@Column(nullable = false)
 	private String custPassword;
 	
@@ -44,24 +43,36 @@ public class Customer {
 	@Column(nullable = false)
 	private int points;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cart_id")
-	private Cart cart;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "cust_id")
+	@JoinColumn(name = "custID")
 	private List<Invoice> invoiceList;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cust_id")
 	private List<Order> orderList;
-		
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "custID")
+	private List<Cart> cartList;
 	
 	public int getCustID() {
 		return custID;
 	}
 	public void setCustID(int custID) {
 		this.custID = custID;
+	}
+	public List<Invoice> getInvoiceList() {
+		return invoiceList;
+	}
+	public void setInvoiceList(List<Invoice> invoiceList) {
+		this.invoiceList = invoiceList;
+	}
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
 	}
 	
 	@Column(nullable = false)
@@ -120,14 +131,6 @@ public class Customer {
 		this.points = points;
 	}
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="CustID")
-	public Cart getCart() {
-		return cart;
-	}
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="CustID")

@@ -52,7 +52,10 @@ public class CategoryController
     	  categoryService.deleteCategory(CategoryId);
       }
 	
-	
+	@GetMapping("getCatNameByParentId/{Id}")
+	public ResponseEntity<?> findByParentCatID(@PathVariable int Id) {
+		return new ResponseEntity<> (categoryService.findByParentCatID(Id),HttpStatus.OK);
+	}
 	
 
 }

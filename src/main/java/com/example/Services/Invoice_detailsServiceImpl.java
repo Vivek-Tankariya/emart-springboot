@@ -61,5 +61,9 @@ public class Invoice_detailsServiceImpl implements Invoice_detailsService
 		}
 		
 	}
+	
+	public List<InvoiceDetails> GetDetails (int invoiceID){
+		return indetailRepository.findByInvID(invoiceID);
+	}
 
 }

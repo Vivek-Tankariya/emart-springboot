@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.Entity.Auth;
 import com.example.Entity.Customer;
 import com.example.Services.CustomerService;
 
@@ -27,9 +28,9 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/{CustomerId}")
-	public ResponseEntity<?> getCustomerById(@PathVariable int id )
+	public ResponseEntity<?> getCustomerById(@PathVariable int CustomerId )
 	{
-		return new ResponseEntity<>(customerService.getCustomerById(id),HttpStatus.OK);
+		return new ResponseEntity<>(customerService.getCustomerById(CustomerId),HttpStatus.OK);
 	}
 	
 	@GetMapping("/byEmail/{email}")
@@ -67,6 +68,24 @@ public class CustomerController {
 	{
 		customerService.deleteCustomer(id);
 	}
+	
+	@PostMapping("/check")
+	public int checkCust(@RequestBody Auth a) {
+		return customerService.checkCust(a.getCustEmail(), a.getCustPassword());
+	}
+	
+	@GetMapping("/isCardHolder/{cid}")
+    public boolean checkCardHolder(@PathVariable int cid) {
+        
+        return customerService.checkCardHolder(cid);
+    }
+	
+	@GetMapping("/points/{cid}")
+    public int getPointsByID(@PathVariable int cid) {
+        
+        return customerService.getPointsByID(cid);
+    }
+	
 	
 
 }

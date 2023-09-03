@@ -1,5 +1,7 @@
 package com.example.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,6 +53,11 @@ public class Invoice_detailsController
       public void deleteInvoice_details(@PathVariable int Invoice_detailsId) {
     	  invoicedetailRepository.deleteInvoice_details(Invoice_detailsId);
       }
+	
+	@GetMapping("/InvoiceID/{invID}")
+		public List<InvoiceDetails> findByInvID(@PathVariable int invID) {
+	  	  return invoicedetailRepository.GetDetails(invID);
+	    }
 	
 
 }

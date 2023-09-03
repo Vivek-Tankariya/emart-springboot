@@ -65,5 +65,11 @@ public class CategoryServiceImpl implements CategoryService
 	public List<Category> getCategoriesByCategoryName(String categoryName) {
         return categoryRepository.findByCategoryName(categoryName);
     }
+	
+	@Override
+	public List<Category> findByParentCatID(int id) {
+		// TODO Auto-generated method stub
+		return categoryRepository.findByParentCatID(id);
+	}
 
 }

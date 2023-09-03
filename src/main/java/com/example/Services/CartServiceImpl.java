@@ -43,13 +43,26 @@ public class CartServiceImpl implements CartService {
 	//Update
 	public Cart updateCart(Cart c, int id) {
 		Cart oldc =  cartRepo.findById(id).get();
-		oldc.setProduct(c.getProduct());
 		oldc.setQty(c.getQty());
-		oldc.setTotalCost(c.getTotalCost());
-		oldc.setDeliveryCharges(c.getDeliveryCharges());
-		oldc.setDiscount(c.getDiscount());
-		oldc.setTotalBill(c.getTotalBill());
+		
+		oldc.setQty(c.getProdID());
+		oldc.setCustID(c.getCustID());
 		return cartRepo.save(oldc);
 		
 	}	
+	
+	public List<Cart> findProdByCustID(int cid){
+		return cartRepo.findProdByCustID(cid);
+	}
+	
+	public int UpdateQty (int QT,int cid) {
+		cartRepo.UpdateQty(QT, cid);
+		return 1;
+	}
+	
+	public int DeletecartByCustID (int cid) {
+		cartRepo.DeletecartByCust(cid);
+		return 1;
+	}
+	
 }

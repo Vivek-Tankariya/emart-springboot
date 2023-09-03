@@ -48,11 +48,29 @@ public class Product {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "prod_id")
 	private List<InvoiceDetails> invoiceDetailsList;
+	
+	private List<Cart> cartList;
+	
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="ProdID")
+	public List<Cart> getCartList() {
+		return cartList;
+	}
+
+	public void setCartList(List<Cart> cartList) {
+		this.cartList = cartList;
+	}
+
+
+
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="ProdID")
 	public List<ConfigDetails> getConfig_details() {
 		return configDetailsList;
 	}
+	
+	
 
 	public void setConfig_details(List<ConfigDetails> config_details) {
 		this.configDetailsList = config_details;

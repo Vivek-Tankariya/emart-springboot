@@ -32,12 +32,28 @@ public class CartController {
 	}
 	
 	@DeleteMapping("/{CartId}")
-	public void deleteCart(@PathVariable int id){
-		cartServ.deleteCart(id);
+	public void deleteCart(@PathVariable int CartId){
+		cartServ.deleteCart(CartId);
 	}
 	
 	@PutMapping("/{Cartid}")
 	public ResponseEntity<?> editCart (@RequestBody Cart c,@PathVariable int id){
 		return new ResponseEntity<> (cartServ.updateCart(c, id),HttpStatus.CREATED);
 	}
+	
+	@GetMapping("/cust/{cid}")
+	public ResponseEntity<?> getProdByCustID(@PathVariable int cid){
+		return new ResponseEntity<> (cartServ.findProdByCustID(cid),HttpStatus.OK);
+	}
+	
+	@PutMapping("/{qty}/{Cartid}")
+	public ResponseEntity<?> UpdateQty (@PathVariable int qty, @PathVariable int Cartid){
+		return new ResponseEntity<> (cartServ.UpdateQty(qty, Cartid),HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/Deletecust/{CustId}")
+	public ResponseEntity<?> DeletecartByCustID(@PathVariable int CustId){
+		return new ResponseEntity<> (cartServ.DeletecartByCustID(CustId),HttpStatus.OK);
+	}
+	
 }

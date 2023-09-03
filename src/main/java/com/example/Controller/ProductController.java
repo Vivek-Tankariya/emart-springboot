@@ -66,5 +66,10 @@ public class ProductController
     	  productService.deleteProduct(productId);
       }
 	
+	@GetMapping("/getCatId/{Id}")
+	public ResponseEntity<?> findByCatID(@PathVariable int Id) {
+		return new ResponseEntity<> (productService.findByCatID(Id),HttpStatus.OK);
+	}
+	
 
 }

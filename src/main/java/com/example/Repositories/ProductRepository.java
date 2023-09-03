@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.example.Entity.Category;
 import com.example.Entity.Product;
 
 import jakarta.transaction.Transactional;
@@ -26,6 +27,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer>
                 .filter(product -> product.getOfferPrice() < product.getMrpPrice())
                 .collect(Collectors.toList());
     }
+	
+	@Query("SELECT p FROM Product p WHERE p.catmasterID = :catId")
+    List<Product> findByCatID(@Param("catId") int catId);
+	
+	
 	
 //	 the default implementation of findProductsWithValidDiscount() provides a convenient way to define custom behavior in your 
 //	 repository without requiring every implementing class to provide the same implementation. If a specific repository needs to 

@@ -47,7 +47,6 @@ public class InvoiceServiceImpl implements InvoiceService  {
 			oldi.setTotalAmt(i.getTotalAmt());
 			oldi.setTax(i.getTax());
 			oldi.setDeliveryCharge(i.getDeliveryCharge());
-			oldi.setDiscount(i.getDiscount());
 			oldi.setTotalAmt(i.getTotalAmt());
 			
 			return invoiceRepo.save(oldi);

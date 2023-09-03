@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import com.example.Entity.Category;
 import com.example.Entity.Customer;
 import com.example.Repositories.CustomerRepository;
 
@@ -66,7 +68,18 @@ public class CustomerServiceImpl implements CustomerService {
 		
 	}
 	
+	public int checkCust(String e, String p) {
+		
+		return customerRepo.checkCust(e,p);
+	}
 	
+	public boolean checkCardHolder(int id) {
+		return customerRepo.checkCardHolder(id);
+	}
+	
+	public int getPointsByID(int id) {
+		return customerRepo.getPointsByID(id);
+	}
 	
 	
 }
