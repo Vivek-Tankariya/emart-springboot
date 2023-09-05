@@ -38,6 +38,16 @@ public class Product {
 	@Column(name = "inventoryQuantity", nullable = false)
 	private int inventoryQuantity;
 	
+	@Column(name = "disc", nullable = true, columnDefinition = "INT DEFAULT 0")
+	private int Disc;
+	
+	public int getDisc() {
+		return Disc;
+	}
+
+	public void setDisc(int disc) {
+		Disc = disc;
+	}
 	@Column(name = "catmasterID", nullable = false)
 	private int catMasterID;
 	
